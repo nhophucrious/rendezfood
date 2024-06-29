@@ -9,13 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            ZStack {
+                Color(AppColor.secondaryColor).ignoresSafeArea()
+                VStack {
+                    Text("Discover new recipes")
+                        .foregroundStyle(Color.white)
+                        .fontWeight(.bold)
+                        .font(.title)
+                    Text("With RendezFood")
+                        .foregroundStyle(AppColor.primaryColor)
+                        .fontWeight(.bold)
+                        .font(.title3)
+                    Spacer()
+                }
+            }
         }
-        .padding()
+        .navigationTitle("RendezFood")
     }
 }
 
