@@ -7,28 +7,40 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView: View {    
     var body: some View {
         NavigationView {
             ZStack {
-                Color(AppColor.secondaryColor).ignoresSafeArea()
                 VStack {
-                    Text("Discover new recipes")
-                        .foregroundStyle(Color.white)
+                    Text("Find new recipe!")
                         .fontWeight(.bold)
                         .font(.title)
-                    Text("With RendezFood")
-                        .foregroundStyle(AppColor.primaryColor)
-                        .fontWeight(.bold)
-                        .font(.title3)
+                    Spacer()
+                    NavigationLink(destination: CategoryView()) {
+                        Text("See all categories")
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .padding()
+                    .tint(AppColor.primaryColor)
                     Spacer()
                 }
             }
+            .navigationBarTitle("RendezFood")
+            .navigationBarTitleTextColor(AppColor.primaryColor)
         }
-        .navigationTitle("RendezFood")
     }
 }
 
 #Preview {
     ContentView()
+}
+
+extension View {
+    @available(iOS 14, *)
+    func navigationBarTitleTextColor(_ color: Color) -> some View {
+        let uiColor = UIColor(color)
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: uiColor ]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: uiColor ]
+        return self
+    }
 }
